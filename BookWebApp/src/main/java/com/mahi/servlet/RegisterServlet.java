@@ -27,13 +27,13 @@ public class RegisterServlet extends HttpServlet {
         String bookEdition = req.getParameter("bookEdition");
         float bookPrice = Float.parseFloat(req.getParameter("bookPrice"));
         //LOAD jdbc driver
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException cnf) {
-            cnf.printStackTrace();
-        }
+		/*
+		 * try { Class.forName("com.mysql.cj.jdbc.Driver"); } catch
+		 * (ClassNotFoundException cnf) { cnf.printStackTrace(); }
+		 */
         //generate the connection
-        try (Connection con = DriverManager.getConnection("jdbc:mysql:///book", "root", "root"); PreparedStatement ps = con.prepareStatement(query);) {
+        try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","mahi");
+        		PreparedStatement ps = con.prepareStatement(query);) {
             ps.setString(1, bookName);
             ps.setString(2, bookEdition);
             ps.setFloat(3, bookPrice);
@@ -54,6 +54,7 @@ public class RegisterServlet extends HttpServlet {
         pw.println("<br>");
         pw.println("<a href='bookList'>Book List</a>");
     }
+    //method override
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         doGet(req, res);
