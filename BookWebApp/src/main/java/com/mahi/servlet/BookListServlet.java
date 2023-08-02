@@ -25,11 +25,7 @@ public class BookListServlet extends HttpServlet {
         //set content type
         res.setContentType("text/html");
         //LOAD jdbc driver
-		/*
-		 * try { // Class.forName("com.mysql.cj.jdbc.Driver");
-		 * Class.forName(“oracle.jdbc.driver.OracleDriver”); } catch
-		 * (ClassNotFoundException cnf) { cnf.printStackTrace(); }
-		 */
+		
         //generate the connection
         try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521"); 
         		PreparedStatement ps = con.prepareStatement(query);) {
