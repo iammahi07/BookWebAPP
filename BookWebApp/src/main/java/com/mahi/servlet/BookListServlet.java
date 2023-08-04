@@ -24,7 +24,7 @@ public class BookListServlet extends HttpServlet {
         PrintWriter pw = res.getWriter();
         //set content type
         res.setContentType("text/html");
-        //LOAD jdbc driver
+        
 		
         //generate the connection
         try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521"); 
