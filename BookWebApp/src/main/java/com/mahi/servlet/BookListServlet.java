@@ -22,7 +22,7 @@ public class BookListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         //get PrintWriter
         PrintWriter pw = res.getWriter();
-        //set content type
+        
         res.setContentType("text/html");
         
 		
