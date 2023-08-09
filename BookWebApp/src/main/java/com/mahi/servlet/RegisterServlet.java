@@ -27,10 +27,7 @@ public class RegisterServlet extends HttpServlet {
         String bookEdition = req.getParameter("bookEdition");
         float bookPrice = Float.parseFloat(req.getParameter("bookPrice"));
         //LOAD jdbc driver
-		/*
-		 * try { Class.forName("com.mysql.cj.jdbc.Driver"); } catch
-		 * (ClassNotFoundException cnf) { cnf.printStackTrace(); }
-		 */
+		
         //generate the connection
         try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","mahi");
         		PreparedStatement ps = con.prepareStatement(query);) {
