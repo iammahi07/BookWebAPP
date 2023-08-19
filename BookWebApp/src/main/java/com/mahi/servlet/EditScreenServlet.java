@@ -24,16 +24,13 @@ public class EditScreenServlet extends HttpServlet {
         PrintWriter pw = res.getWriter();
         //set content type
         res.setContentType("text/html");
-        //get the id of record
+        //get the id of recor
         int id = Integer.parseInt(req.getParameter("id"));
         //LOAD jdbc driver
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException cnf) {
-            cnf.printStackTrace();
-        }
+       
         //generate the connection
-        try (Connection con = DriverManager.getConnection("jdbc:mysql:///book", "root", "root"); PreparedStatement ps = con.prepareStatement(query);) {
+        try (Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl","system","mahi");
+        		PreparedStatement ps = con.prepareStatement(query);) {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             rs.next();
